@@ -14,10 +14,32 @@ let kSARRingRotationAnimationKey = "sarmaterialdesignspinner.rotation"
 let kSARRingStrokeAnimationDuration = 1.5
 
 class SARMaterialDesignSpinner: UIView {
+    
+    //    mark: -Accessors
+    
+    @IBInspectable var lineWidth: CGFloat {
+        get {
+            return self.progressLayer.lineWidth
+        }
+        set(newValue) {
+            self.progressLayer.lineWidth = newValue
+            self.updateProgressLayerPath()
+        }
+    }
+    
+    @IBInspectable var strokeColor: UIColor {
+        get {
+            return UIColor(cgColor: self.progressLayer.strokeColor!)
+        }
+        set(newValue) {
+            self.progressLayer.strokeColor = newValue.cgColor
+        }
+    }
+    
     let progressLayer = CAShapeLayer()
     var timingFunction: CAMediaTimingFunction!
     var isAnimating = false
-    var enableGoogleMultiColoredSpinner = true
+    var enableGoogleMultiColoredSpinner = false
     var count = 0
     let googleColorsArray = [UIColor.blue, UIColor.red, UIColor.yellow, UIColor.green]
     var timer: Timer!
@@ -75,7 +97,7 @@ class SARMaterialDesignSpinner: UIView {
         self.progressLayer.strokeEnd = 0.0
     }
 
-    func handleGoogleMultiColoredTimer() {
+    @objc func handleGoogleMultiColoredTimer() {
         count += 1
         if !enableGoogleMultiColoredSpinner {
             return
@@ -84,26 +106,6 @@ class SARMaterialDesignSpinner: UIView {
         let index = count % self.googleColorsArray.count
         let color = self.googleColorsArray[index]
         self.progressLayer.strokeColor = color.cgColor
-    }
-
-    //    mark: -Accessors
-    var lineWidth: CGFloat {
-        get {
-            return self.progressLayer.lineWidth
-        }
-        set(newValue) {
-            self.progressLayer.lineWidth = newValue
-            self.updateProgressLayerPath()
-        }
-    }
-
-    var strokeColor: UIColor {
-        get {
-            return UIColor(cgColor: self.progressLayer.strokeColor!)
-        }
-        set(newValue) {
-            self.progressLayer.strokeColor = newValue.cgColor
-        }
     }
 
     //    mark: -Animation Methods
