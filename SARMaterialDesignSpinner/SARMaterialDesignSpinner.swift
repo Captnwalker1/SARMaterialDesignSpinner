@@ -13,11 +13,11 @@ let kSARRingStrokeAnimationKey = "sarmaterialdesignspinner.stroke"
 let kSARRingRotationAnimationKey = "sarmaterialdesignspinner.rotation"
 let kSARRingStrokeAnimationDuration = 1.5
 
-class SARMaterialDesignSpinner: UIView {
+open class SARMaterialDesignSpinner: UIView {
     
     //    mark: -Accessors
     
-    @IBInspectable var lineWidth: CGFloat {
+    @IBInspectable public var lineWidth: CGFloat {
         get {
             return self.progressLayer.lineWidth
         }
@@ -27,7 +27,7 @@ class SARMaterialDesignSpinner: UIView {
         }
     }
     
-    @IBInspectable var strokeColor: UIColor {
+    @IBInspectable public var strokeColor: UIColor {
         get {
             return UIColor(cgColor: self.progressLayer.strokeColor!)
         }
@@ -39,7 +39,7 @@ class SARMaterialDesignSpinner: UIView {
     let progressLayer = CAShapeLayer()
     var timingFunction: CAMediaTimingFunction!
     var isAnimating = false
-    var enableGoogleMultiColoredSpinner = false
+    public var enableGoogleMultiColoredSpinner = false
     var count = 0
     let googleColorsArray = [UIColor.blue, UIColor.red, UIColor.yellow, UIColor.green]
     var timer: Timer!
@@ -55,12 +55,12 @@ class SARMaterialDesignSpinner: UIView {
         setup()
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         setup()
     }
 
-    override func layoutSubviews() {
+    override open func layoutSubviews() {
         self.progressLayer.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
         self.updateProgressLayerPath()
     }
@@ -109,7 +109,7 @@ class SARMaterialDesignSpinner: UIView {
     }
 
     //    mark: -Animation Methods
-    func startAnimating() {
+    public func startAnimating() {
         if self.isAnimating {
             return
         }
@@ -157,7 +157,7 @@ class SARMaterialDesignSpinner: UIView {
 
     }
 
-    func stopAnimating() {
+    public func stopAnimating() {
         if !self.isAnimating {
             return
         }

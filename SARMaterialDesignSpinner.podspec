@@ -1,6 +1,6 @@
  Pod::Spec.new do |spec|
   spec.name          = 'SARMaterialDesignSpinner'
-  spec.version       = '0.0.1.0'
+  spec.version       = '0.0.1.1'
   spec.swift_version = '3.2'
   spec.summary       = "Inspired from Google's Material Design Spinner"
   spec.description   = "A material design loading spinner inspired from Google's Material Design Spinner. Swift version of MMMaterialDesignSpinner which was inspired from Google's Material Design Guidelines."
