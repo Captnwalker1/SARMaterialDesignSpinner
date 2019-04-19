@@ -75,7 +75,7 @@ class SARMaterialDesignSpinner: UIView {
         self.progressLayer.strokeEnd = 0.0
     }
 
-    func handleGoogleMultiColoredTimer() {
+    @objc func handleGoogleMultiColoredTimer() {
         count += 1
         if !enableGoogleMultiColoredSpinner {
             return
